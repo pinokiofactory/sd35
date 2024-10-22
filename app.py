@@ -2,7 +2,7 @@ import gradio as gr
 import numpy as np
 import random
 
-from diffusers import DiffusionPipeline
+from diffusers import StableDiffusionPipeline
 import torch
 import devicetorch
 import gc
@@ -59,7 +59,7 @@ def infer(
         gc.collect()
 
         #pipe = DiffusionPipeline.from_pretrained(model_repo_id, torch_dtype=torch_dtype)
-        pipe = DiffusionPipeline.from_single_file(model_repo_id, torch_dtype=torch_dtype)
+        pipe = StableDiffusionPipeline.from_single_file(model_repo_id, torch_dtype=torch_dtype)
         pipe = pipe.to(device)
         selected = model_repo_id
 
