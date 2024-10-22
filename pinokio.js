@@ -1,9 +1,9 @@
 const path = require('path')
 module.exports = {
   version: "2.0",
-  title: "sd35",
-  description: "",
-  icon: "icon.png",
+  title: "stable diffusion 3.5",
+  description: "Stable Diffusion 3.5 Gradio UI",
+  icon: "icon.jpeg",
   menu: async (kernel, info) => {
     let installed = info.exists("env")
     let running = {
