@@ -45,9 +45,9 @@ def infer(
     generator = torch.Generator().manual_seed(seed)
 
     if model_name == "3.5 large turbo":
-        model_repo_id = "cocktailpeanut/sd35turbo"
+        model_repo_id = "https://huggingface.co/cocktailpeanut/sd35/blob/main/sd3.5_large.safetensors"
     elif model_name == "3.5 large":
-        model_repo_id = "cocktailpeanut/sd35"
+        model_repo_id = "https://huggingface.co/cocktailpeanut/sd35turbo/blob/main/sd3.5_large_turbo.safetensors"
 
     global pipe
     global selected
@@ -58,7 +58,8 @@ def infer(
         devicetorch.empty_cache(torch)
         gc.collect()
 
-        pipe = DiffusionPipeline.from_pretrained(model_repo_id, torch_dtype=torch_dtype)
+        #pipe = DiffusionPipeline.from_pretrained(model_repo_id, torch_dtype=torch_dtype)
+        pipe = DiffusionPipeline.from_single_file(model_repo_id, torch_dtype=torch_dtype)
         pipe = pipe.to(device)
         selected = model_repo_id
 
